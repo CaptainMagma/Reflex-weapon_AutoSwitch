@@ -71,7 +71,7 @@ function weapon_AutoSwitch:draw()
 
 	ownedWeapons = {}
 	for w, weapon in pairs(player.weapons) do
-		if w == WEAPON_AXE or weapon.ammo > 0 then
+		if w == WEAPON_AXE or (weapon.ammo > 0 and weapon.pickedup) then
 			ownedWeapons[w] = weapon
 		end
 	end
@@ -87,7 +87,7 @@ function weapon_AutoSwitch:draw()
 			local switch = nil
 			for i=1,#weaponPriority do
 				local w = weaponPriority[i]
-				if w == WEAPON_AXE or player.weapons[w] and player.weapons[w].ammo > 0 then 
+				if w == WEAPON_AXE or (player.weapons[w].pickedup and player.weapons[w].ammo > 0) then
 					switch = w
 					break;
 				end
